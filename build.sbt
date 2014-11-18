@@ -18,7 +18,7 @@ crossScalaVersions := Seq(
 
 lazy val base = project
 
-lazy val crypto = project
+lazy val crypto = project.dependsOn(base)
 
 lazy val root = Project(
   id        = "root",
@@ -26,6 +26,5 @@ lazy val root = Project(
   aggregate = Seq(base, crypto),
   settings  = Project.defaultSettings ++ Seq(
     publishArtifact := false
-//    packagedArtifacts := Map.empty           // prevent publishing anything!
   )
 )

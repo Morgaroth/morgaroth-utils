@@ -1,4 +1,4 @@
-package pl.morgaroth.utils.crypto
+package io.github.morgaroth.utils.crypto
 
 import org.cryptonode.jncryptor.{AES256JNCryptor, CryptorException, InvalidHMACException}
 
@@ -19,9 +19,11 @@ trait AESEncryptions {
     }
   }
 
-  implicit def wrapIntoEncryptable(string: String) = new ToAESEncyptable(string.getBytes)
+  import scala.language.implicitConversions
 
-  implicit def wrapIntoEncryptable(byteArray: Array[Byte]) = new ToAESEncyptable(byteArray)
+  implicit def wrapIntoEncryptable(string: String): ToAESEncyptable = new ToAESEncyptable(string.getBytes)
+
+  implicit def wrapIntoEncryptable(byteArray: Array[Byte]): ToAESEncyptable = new ToAESEncyptable(byteArray)
 }
 
 trait AESDecryptions {
@@ -45,7 +47,9 @@ trait AESDecryptions {
     }
   }
 
-  implicit def wrapIntoAESDecryptable(encryptedData: Array[Byte]) = new AESDecryptable(encryptedData)
+  import scala.language.implicitConversions
+
+  implicit def wrapIntoAESDecryptable(encryptedData: Array[Byte]): AESDecryptable = new AESDecryptable(encryptedData)
 }
 
 trait AESOperations extends AESDecryptions with AESEncryptions

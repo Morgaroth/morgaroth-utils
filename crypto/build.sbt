@@ -6,8 +6,7 @@ version := ThisProject.projectVersion
 resolvers += Resolver.sonatypeRepo("releases")
 
 libraryDependencies ++= Seq(
-  "org.cryptonode.jncryptor"  %   "jncryptor"       % "1.0.1",
-  "pl.morgaroth"              %%  "morgaroth-utils" % "1.1.0"
+  "org.cryptonode.jncryptor"  %   "jncryptor"       % "1.0.1"
 )
 
 pomExtra := <url>https://github.com/Morgaroth/morgaroth-utils-crypto</url>

@@ -1,4 +1,4 @@
-package pl.morgaroth
+package io.github.morgaroth
 
 package object utils {
   def printning[T](any: T, prefix: String = "", postfix: String = "")

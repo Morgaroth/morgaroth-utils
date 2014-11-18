@@ -1,6 +1,6 @@
-package pl.morgaroth.utils.crypto
+package io.github.morgaroth.utils.crypto
 
-import pl.morgaroth.utils.strings.{Base64Decoding, Base64Encoding}
+import io.github.morgaroth.utils.strings.{Base64Encoding, Base64Decoding}
 
 trait AESWithBase64Decryptor extends AESDecryptions with Base64Decoding {
 
