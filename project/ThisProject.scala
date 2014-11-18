@@ -9,7 +9,7 @@ object ThisProject {
   def projectName = "morgaroth-utils"
   def projectVersion = "1.2.4-SNAPSHOT"
 
-  def generatePomFile(pomData: PomData) = <url>pomData.repoUrl</url>
+  def generatePomFile(pomData: PomData) = <url>{pomData.repoUrl}</url>
     <licenses>
       <license>
         <name>BSD-style</name>
@@ -18,8 +18,8 @@ object ThisProject {
       </license>
     </licenses>
     <scm>
-      <url>pomData.developerUrl</url>
-      <connection>scm:git:pomData.developerUrl</connection>
+      <url>{pomData.developerUrl}</url>
+      <connection>scm:git:{pomData.developerUrl}</connection>
     </scm>
     <developers>
       <developer>

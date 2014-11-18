@@ -21,7 +21,7 @@ lazy val base = project
 lazy val crypto = project.dependsOn(base)
 
 lazy val root = Project(
-  id        = "root",
+  id        = "morgaroth",
   base      = file("."),
   aggregate = Seq(base, crypto),
   settings  = Project.defaultSettings ++ Seq(
