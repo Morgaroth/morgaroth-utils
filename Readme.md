@@ -1,7 +1,11 @@
 # Sbt line
 
 ```scala
+//libraryDependencies += "io.github.morgaroth" %% "morgaroth-utils-PROPER_NAME" % "1.2.4"
 libraryDependencies += "io.github.morgaroth" %% "morgaroth-utils-base" % "1.2.4"
+libraryDependencies += "io.github.morgaroth" %% "morgaroth-utils-crypto" % "1.2.4"
+libraryDependencies += "io.github.morgaroth" %% "morgaroth-utils-mongodb" % "1.2.4"
+libraryDependencies += "io.github.morgaroth" %% "morgaroth-utils-spray" % "1.2.4"
 ```
 
 
@@ -9,7 +13,9 @@ libraryDependencies += "io.github.morgaroth" %% "morgaroth-utils-base" % "1.2.4"
 
 * v1.2.4:
 
-    * added printToFile function as method as extension method to String
+    * more
+    * added SalatDAOConf class (extending SalatDAO) which provides reading database access from application configuration
+    * added two new modules: spray for utils for applications based on spray and mongodb for mondodb support
 
 * v1.2.3:
     

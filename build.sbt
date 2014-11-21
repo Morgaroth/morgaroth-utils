@@ -1,3 +1,4 @@
+import ThisProject.PomData
 
 sonatypeSettings
 
@@ -16,15 +17,27 @@ crossScalaVersions := Seq(
   "2.11.0"
 )
 
+resolvers ++= Seq(
+  "Sonatype OSS Releases" at "http://oss.sonatype.org/content/repositories/releases/"
+)
+
+pomExtra := ThisProject.generatePomFile(
+  PomData("https://github.com/Morgaroth/morgaroth-utils", "git@github.com:Morgaroth/morgaroth-utils.git")
+)
+
 lazy val base = project
+
+lazy val mongodb = project
 
 lazy val crypto = project.dependsOn(base)
 
+lazy val spray = project.dependsOn(mongodb, base)
+
 lazy val root = Project(
-  id        = "morgaroth",
-  base      = file("."),
-  aggregate = Seq(base, crypto),
-  settings  = Project.defaultSettings ++ Seq(
+  id = "morgaroth",
+  base = file("."),
+  aggregate = Seq(base, crypto, spray, mongodb),
+  settings = Project.defaultSettings ++ Seq(
     publishArtifact := false
   )
 )
