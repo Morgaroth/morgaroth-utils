@@ -9,6 +9,7 @@ libraryDependencies += "io.github.morgaroth" %% "morgaroth-utils-base" % "1.2.4"
 
 * v1.2.4:
 
+    * replaced reflective objects with explicit wrapper classes
     * added printToFile function as method as extension method to String
 
 * v1.2.3:
