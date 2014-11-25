@@ -10,9 +10,9 @@ trait Base64Encoding {
 
   import scala.language.implicitConversions
 
-  implicit def wrapIntoEncodable(string: String) = new ToBase64EncodableByteArray(string.getBytes)
+  implicit def wrapIntoEncodable(string: String): Base64Encoding.this.type#ToBase64EncodableByteArray = new ToBase64EncodableByteArray(string.getBytes)
 
-  implicit def wrapIntoEncodable(byteArray: Array[Byte]) = new ToBase64EncodableByteArray(byteArray)
+  implicit def wrapIntoEncodable(byteArray: Array[Byte]): Base64Encoding.this.type#ToBase64EncodableByteArray = new ToBase64EncodableByteArray(byteArray)
 }
 
 trait Base64Decoding {
@@ -23,7 +23,7 @@ trait Base64Decoding {
 
   import scala.language.implicitConversions
 
-  implicit def wrapIntoDecodableString(string: String) = new FromBase64DecodableString(string)
+  implicit def wrapIntoDecodableString(string: String): Base64Decoding.this.type#FromBase64DecodableString = new FromBase64DecodableString(string)
 }
 
 trait Base64Operations extends Base64Encoding with Base64Decoding

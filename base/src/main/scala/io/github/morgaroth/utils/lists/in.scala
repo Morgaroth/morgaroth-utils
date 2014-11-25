@@ -8,5 +8,5 @@ object in {
 
   import scala.language.implicitConversions
 
-  implicit def wrapIntoInable[T](elem: T) = new inable(elem)
+  implicit def wrapIntoInable[T](elem: T): inable[T] = new inable(elem)
 }

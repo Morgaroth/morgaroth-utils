@@ -14,5 +14,5 @@ object hashableString {
 
   import scala.language.implicitConversions
 
-  implicit def wrapAsHashableString(string: String) = new HashingRichString(string)
+  implicit def wrapAsHashableString(string: String): HashingRichString = new HashingRichString(string)
 }

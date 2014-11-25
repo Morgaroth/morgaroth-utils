@@ -13,5 +13,5 @@ object escapingRegex {
 
   import scala.language.implicitConversions
 
-  implicit def wrapToRich(str: String) = new RichString(str)
+  implicit def wrapToRich(str: String): RichString = new RichString(str)
 }

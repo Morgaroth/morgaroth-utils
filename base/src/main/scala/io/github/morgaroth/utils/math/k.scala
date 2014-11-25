@@ -8,7 +8,7 @@ object k {
 
   import scala.language.implicitConversions
 
-  implicit def wrapIntoKAble(double: Double) = new {
+  class KAbleNumber(double: Double) {
     def k = this.~(k_)
     def kk = this.~(kk_)
 
@@ -20,4 +20,6 @@ object k {
       ret.toInt
     }
   }
+
+  implicit def wrapIntoKAble(double: Double): KAbleNumber = new KAbleNumber(double)
 }

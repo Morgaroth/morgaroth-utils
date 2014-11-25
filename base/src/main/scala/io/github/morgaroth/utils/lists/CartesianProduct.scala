@@ -13,5 +13,5 @@ object CartesianProduct {
 
   import scala.language.implicitConversions
 
-  implicit def wrapToListWithCartesianProduct[a](list: Iterable[a]) = new ListWrapper(list)
+  implicit def wrapToListWithCartesianProduct[a](list: Iterable[a]): ListWrapper[a] = new ListWrapper(list)
 }

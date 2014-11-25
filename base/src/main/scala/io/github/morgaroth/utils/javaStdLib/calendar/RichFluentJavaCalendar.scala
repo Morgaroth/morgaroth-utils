@@ -6,9 +6,9 @@ object RichFluentJavaCalendar {
 
   import scala.language.implicitConversions
 
-  implicit def wrapCalendar(calendar: Calendar) = new RichFluentCalendar(calendar)
+  implicit def wrapCalendar(calendar: Calendar): RichFluentCalendar = new RichFluentCalendar(calendar)
 
-  implicit def unwrapCalendar(wrapper: RichFluentCalendar) = wrapper.wrapped
+  implicit def unwrapCalendar(wrapper: RichFluentCalendar): Calendar = wrapper.wrapped
 
   class RichFluentCalendar(val wrapped: Calendar) {
 

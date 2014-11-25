@@ -15,5 +15,5 @@ object replaceAllAll {
 
   import scala.language.implicitConversions
 
-  implicit def wrapToReplacingAllAllString(str: String) = new RichString(str)
+  implicit def wrapToReplacingAllAllString(str: String): RichString = new RichString(str)
 }

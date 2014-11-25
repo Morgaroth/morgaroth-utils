@@ -11,5 +11,5 @@ object returnablePrint {
 
   import scala.language.implicitConversions
 
-  implicit def wrapIntoPrintableObject[T](obj: T) = new PrintAndReturnWrapper(obj)
+  implicit def wrapIntoPrintableObject[T](obj: T): PrintAndReturnWrapper[T] = new PrintAndReturnWrapper(obj)
 }

@@ -6,7 +6,9 @@ trait PrintToFile {
 
   import scala.language.implicitConversions
 
-  implicit def wrapToPrintableToFile(data: String) = new {
+  implicit def wrapToPrintableToFile(data: String): PrintToFile.this.type#WritableToFile = new WritableToFile(data)
+
+  class WritableToFile(data: String) {
     def printToFile(file: File): Unit = internalPrintToFile(file)(_.write(data))
     def printToFile(path: String): Unit = printToFile(new File(path))
   }
@@ -22,8 +24,6 @@ trait PrintToFile {
       p.close()
     }
   }
-
-
 }
 
 object PrintToFile extends PrintToFile
