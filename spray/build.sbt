@@ -4,6 +4,12 @@ version := ThisProject.projectVersion
 
 scalacOptions ++= Seq("-feature")
 
+organization := ThisProject.organization
+
+pomExtra := ThisProject.commonPomFile
+
+publishTo := ThisProject.publishTo
+
 val sprayV = "1.3.2"
 
 libraryDependencies ++= Seq(

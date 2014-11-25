@@ -4,7 +4,13 @@ version := ThisProject.projectVersion
 
 scalacOptions ++= Seq("-feature")
 
-val ficusDependency = scalaVersion {
+organization := ThisProject.organization
+
+pomExtra := ThisProject.commonPomFile
+
+publishTo := ThisProject.publishTo
+
+val ficusDependency: Def.Initialize[ModuleID] = scalaVersion {
   case "2.11.0" => "net.ceedubs" %% "ficus" % "1.1.1"
   case _ => "net.ceedubs" %% "ficus" % "1.0.1"
 }

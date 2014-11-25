@@ -1,8 +1,6 @@
-import ThisProject.PomData
-
 sonatypeSettings
 
-organization := "io.github.morgaroth"
+organization := ThisProject.organization
 
 publishMavenStyle := true
 
@@ -19,10 +17,6 @@ crossScalaVersions := Seq(
 
 resolvers ++= Seq(
   "Sonatype OSS Releases" at "http://oss.sonatype.org/content/repositories/releases/"
-)
-
-pomExtra := ThisProject.generatePomFile(
-  PomData("https://github.com/Morgaroth/morgaroth-utils", "git@github.com:Morgaroth/morgaroth-utils.git")
 )
 
 lazy val base = project
