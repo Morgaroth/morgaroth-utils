@@ -4,6 +4,8 @@ import Keys._
 
 object ThisProject {
 
+  val akkaVersion = "2.3.6"
+
   case class PomData(repoUrl:String,developerUrl:String)
 
   def projectName = "morgaroth-utils"
