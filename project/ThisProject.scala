@@ -6,6 +6,8 @@ import scala.xml.NodeBuffer
 
 object ThisProject {
 
+  val akkaVersion = "2.3.6"
+
   case class PomData(repoUrl:String,developerUrl:String)
 
   def projectName = "morgaroth-utils"
@@ -43,5 +45,4 @@ object ThisProject {
         <name>Mateusz Jaje</name>
       </developer>
     </developers>
-
 }
