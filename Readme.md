@@ -1,19 +1,28 @@
 # Sbt line
 
 ```scala
-//libraryDependencies += "io.github.morgaroth" %% "morgaroth-utils-PROPER_NAME" % "1.2.4"
-libraryDependencies += "io.github.morgaroth" %% "morgaroth-utils-base" % "1.2.4"
-libraryDependencies += "io.github.morgaroth" %% "morgaroth-utils-crypto" % "1.2.4"
-libraryDependencies += "io.github.morgaroth" %% "morgaroth-utils-mongodb" % "1.2.4"
-libraryDependencies += "io.github.morgaroth" %% "morgaroth-utils-spray" % "1.2.4"
+val currentVersion = "1.2.5"
+
+libraryDependencies += "io.github.morgaroth" %% "morgaroth-utils-PROPER_NAME" % currentVersion
+libraryDependencies += "io.github.morgaroth" %% "morgaroth-utils-base" % currentVersion
+libraryDependencies += "io.github.morgaroth" %% "morgaroth-utils-crypto" % currentVersion
+libraryDependencies += "io.github.morgaroth" %% "morgaroth-utils-mongodb" % currentVersion
+libraryDependencies += "io.github.morgaroth" %% "morgaroth-utils-spray" % currentVersion
 ```
 
 
 # CHANGELOG
 
+* v1.2.6:
+
+    * no changes yet
+
+* v1.2.5:
+
+    * spray: added traits with loggers which simplifies working with loggers outside actors, when is implicit actorSystem available in scope
+
 * v1.2.4:
 
-    * more
     * added SalatDAOConf class (extending SalatDAO) which provides reading database access from application configuration
     * added two new modules: spray for utils for applications based on spray and mongodb for mondodb support
 
