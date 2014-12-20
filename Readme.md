@@ -1,3 +1,5 @@
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/Morgaroth/morgaroth-utils/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
 # Sbt line
 
 ```scala
