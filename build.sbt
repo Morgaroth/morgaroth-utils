@@ -23,16 +23,18 @@ lazy val base = project
 
 lazy val mongodb = project
 
+lazy val mongodb_testing = project
+
 lazy val crypto = project.dependsOn(base)
 
 lazy val spray = project.dependsOn(mongodb, base)
 
 lazy val akka = project
 
-lazy val root = Project(
+lazy val morgaroth = Project(
   id = "morgaroth",
   base = file("."),
-  aggregate = Seq(base, crypto, spray, mongodb, akka),
+  aggregate = Seq(base, crypto, spray, mongodb, akka, mongodb_testing),
   settings = Project.defaultSettings ++ Seq(
     publishArtifact := false
   )

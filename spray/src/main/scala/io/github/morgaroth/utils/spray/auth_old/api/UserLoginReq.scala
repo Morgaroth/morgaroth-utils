@@ -1,4 +1,4 @@
-package io.github.morgaroth.utils.spray.auth.api
+package io.github.morgaroth.utils.spray.auth_old.api
 
 import spray.json.{RootJsonFormat, DefaultJsonProtocol}
 

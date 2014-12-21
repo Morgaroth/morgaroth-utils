@@ -1,6 +1,6 @@
 package io.github.morgaroth.utils.spray.auth
 
-import spray.http.{Rendering, HttpHeader}
+import spray.http.{HttpHeader, Rendering}
 
 trait AuthServiceHeader {
   val HeaderName = "X-Session-Header"
@@ -8,7 +8,7 @@ trait AuthServiceHeader {
 
 case class XSessionHeader(value: String) extends HttpHeader {
 
-  import XSessionHeader._
+  import io.github.morgaroth.utils.spray.auth.XSessionHeader._
 
   override def name: String = HeaderName
 

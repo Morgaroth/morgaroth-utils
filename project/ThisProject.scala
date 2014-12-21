@@ -11,7 +11,7 @@ object ThisProject {
   case class PomData(repoUrl:String,developerUrl:String)
 
   def projectName = "morgaroth-utils"
-  def projectVersion = "1.2.5"
+  def projectVersion = "1.2.6-SNAPSHOT"
 
   val organization: String = "io.github.morgaroth"
 
