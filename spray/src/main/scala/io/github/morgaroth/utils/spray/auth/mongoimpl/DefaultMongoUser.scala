@@ -1,23 +1,22 @@
 package io.github.morgaroth.utils.spray.auth.mongoimpl
 
-import com.mongodb.WriteConcern
-import com.novus.salat.annotations.Key
-import com.novus.salat.dao.SalatDAO
+import com.novus.salat.annotations._
 import io.github.morgaroth.utils.mongodb.salat.SalatDAOWithCfg
 import io.github.morgaroth.utils.spray.auth.UserDAO
 import net.ceedubs.ficus.Ficus._
 import com.novus.salat.global.ctx
 
-
-trait MongoUserDAO[UserType] extends UserDAO[UserType] {
-  this: SalatDAO[UserType, String] =>
-  override def findUserById(id: String): Option[UserType] = findOneById(id)
+trait IdAble extends AnyRef {
+  def getId: String
 }
+
 
 case class DefaultMongoUser(
                              @Key("_id") email: String,
                              password: String
-                             )
+                             ) extends IdAble {
+  override def getId: String = email
+}
 
 trait DefaultMongoUserDAO extends UserDAO[DefaultMongoUser] {
   this: UserDBConfig =>
@@ -35,5 +34,5 @@ trait DefaultMongoUserDAO extends UserDAO[DefaultMongoUser] {
   }
 
   override def findUserById(id: String): Option[DefaultMongoUser] = dao.findOneById(id)
-  override def checkCorrectPassword(id: String, password: String): Unit = dao.checkCorrectPassword(id, password)
+  override def checkCorrectPassword(id: String, password: String) = dao.checkCorrectPassword(id, password)
 }

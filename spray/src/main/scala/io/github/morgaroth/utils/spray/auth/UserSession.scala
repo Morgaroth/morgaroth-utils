@@ -1,7 +1,7 @@
 package io.github.morgaroth.utils.spray.auth
 
 trait UserSession {
-  def userID: String
+  def userId: String
   def token: String
 }
 

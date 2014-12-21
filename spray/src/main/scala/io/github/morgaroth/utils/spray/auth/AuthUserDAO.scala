@@ -12,7 +12,6 @@ trait UserDAO[UserType] {
  * Trait that provide access to user sessions
  */
 trait SessionDAO[UserType, SessionType <: UserSession] {
-  this: UserDAO[UserType] =>
   def findSession(token: String): Option[SessionType]
   def saveSession(token: String, user: UserType): SessionType
   def deleteSession(token: String)

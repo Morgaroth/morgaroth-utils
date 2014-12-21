@@ -1,12 +1,5 @@
 package io.github.morgaroth.utils.spray.auth
 
-import io.github.morgaroth.utils.spray.auth.XSessionHeader
-import io.github.morgaroth.utils.spray.auth_old.api.{UserLoginRespModel, UserLoginResp, UserLoginReq}
-import io.github.morgaroth.utils.spray.cors.CORSDirectives
-import spray.http.{MediaTypes, HttpEntity, StatusCodes, HttpResponse}
-import spray.routing.Directives
-import spray.routing.directives.RouteDirectives
-
 /**
  * Responsibilities:
  * 1. Extracting authentication token from request context

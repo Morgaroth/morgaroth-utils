@@ -11,6 +11,10 @@ pomExtra := ThisProject.commonPomFile
 
 publishTo := ThisProject.publishTo
 
+resolvers ++= Seq(
+  "Sonatype OSS Releases" at "http://oss.sonatype.org/content/repositories/releases/"
+)
+
 val ficusDependency = scalaVersion {
   case "2.11.4" | "2.11.2" | "2.11.0" =>
     "net.ceedubs" %% "ficus" % "1.1.1" withSources()
@@ -19,7 +23,7 @@ val ficusDependency = scalaVersion {
 }
 
 libraryDependencies ++= Seq(
-  "com.novus"     %% "salat"  % "1.9.9" withSources(),
+  "com.novus"     %% "salat"  % "1.9.9",
   "com.typesafe"  %  "config" % "1.2.1" withSources(),
   "org.specs2"    %% "specs2" % "2.2.3" withSources()
 )
