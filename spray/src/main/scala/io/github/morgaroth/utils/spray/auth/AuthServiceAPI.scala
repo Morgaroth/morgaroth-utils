@@ -38,26 +38,26 @@ trait AuthServiceAPI[UserType, SessionType <: UserSession]
   //@formatter:off
   val route =
     optionsForCors ~
-      pathEndOrSingleSlash {
-        get(complete("Hello from auth service")) ~
-          post(respondWithCors {
-            handleWith((userReq: UserLoginReq) =>
-              loginUser(userReq.login, userReq.password) match {
-                case Some(session) => Right(Created -> UserLoginResp(session.token))
-                case None => Left(BadRequest)
-              })
-          }) ~
-          delete(headerValueByName(HeaderName)(authToken =>
-            complete {
-              logoutUser(authToken)
-              NoContent
-            }
-          ))
-      } ~
-      path("validate") {
-        get(validateDirective(user =>
-          user => complete(s"You have access as $user")
-        ))
-      }
+    pathEndOrSingleSlash {
+    get(complete("Hello from auth service")) ~
+      post(respondWithCors {
+        handleWith((userReq: UserLoginReq) =>
+          loginUser(userReq.login, userReq.password) match {
+            case Some(session) => Right(Created -> UserLoginResp(session.token))
+            case None => Left(BadRequest)
+          })
+      }) ~
+      delete(headerValueByName(HeaderName)(authToken =>
+        complete {
+          logoutUser(authToken)
+          NoContent
+        }
+      ))
+    } ~
+    path("validate") {
+      get(validateDirective(user =>
+        user => complete(s"You have access as $user")
+      ))
+    }
   //@formatter:on
 }
