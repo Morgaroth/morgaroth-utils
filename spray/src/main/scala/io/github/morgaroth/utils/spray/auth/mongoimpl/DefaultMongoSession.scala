@@ -21,10 +21,10 @@ trait DefaultMongoSessionDAO[UserType <: IdAble] extends SessionDAO[UserType, De
   private val collectionNameCfg: String = sessionsDbConfig.as[Option[String]]("name").getOrElse("loggedUsers")
 
   lazy val dao = new SalatDAOWithCfg[DefaultMongoSession, String](dbUri, collectionNameCfg) with MongoSessionsDAO[UserType, DefaultMongoSession] {
-    override def saveSession(token: String, user: UserType): DefaultMongoSession = DefaultMongoSession(token, user.getId)
+    override def createSession(token: String, user: UserType): DefaultMongoSession = DefaultMongoSession(token, user.getId)
   }
 
   override def findSession(token: String): Option[DefaultMongoSession] = dao.findOneById(token)
-  override def saveSession(token: String, user: UserType): DefaultMongoSession = dao.saveSession(token, user)
+  override def createSession(token: String, user: UserType): DefaultMongoSession = dao.createSession(token, user)
   override def deleteSession(token: String): Unit = dao.deleteSession(token)
 }

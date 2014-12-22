@@ -19,17 +19,17 @@ case class DefaultMongoUser(
 }
 
 trait DefaultMongoUserDAO extends UserDAO[DefaultMongoUser] {
-  this: UserDBConfig =>
+  this: UsersDBConfig =>
 
-  private val dbUri: String = userDbConfig.as[Option[String]]("uri").getOrElse {
+  private val dbUri: String = usersDbConfig.as[Option[String]]("uri").getOrElse {
     throw new IllegalArgumentException(s"You must provide database uri as `uri` field in provided by userDbConfig config!")
   }
-  private val collectionNameCfg: String = userDbConfig.as[Option[String]]("name").getOrElse("users")
+  private val collectionNameCfg: String = usersDbConfig.as[Option[String]]("name").getOrElse("users")
 
   lazy val dao = new SalatDAOWithCfg[DefaultMongoUser, String](dbUri, collectionNameCfg) with MongoUserDAO[DefaultMongoUser] {
     override def checkCorrectPassword(id: String, password: String) = findUserById(id) match {
-      case None => false
-      case Some(user) => user.password == password
+      case correct@Some(user) if user.password == password => correct
+      case None => None
     }
   }
 

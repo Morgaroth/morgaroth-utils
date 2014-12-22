@@ -3,11 +3,23 @@ package io.github.morgaroth.utils.spray.auth
 /**
  * Responsibility: log in/out user
  */
-trait AuthServiceAuthentication // [UserType,SessionType] {
-//  def loginUser(loginID: String, password: String)(implicit luDAO: AuthUserDAO[UserType,SessionType], tokenGenerator: AuthServiceTokenGenerator): Option[SessionType]
-//  def logoutUser(token: String)
-//}
-//
+trait AuthServiceAuthentication[UserType, SessionType <: UserSession] {
+  this: UserDAO[UserType] with SessionDAO[UserType, SessionType] with AuthServiceTokenGenerator =>
+
+  def loginUser(loginID: String, password: String): Option[SessionType] =
+    checkCorrectPassword(loginID, password) match {
+      case Some(user) => Some(createSession(generateToken, user))
+      case _ => None
+    }
+
+  def logoutUser(token: String): Unit = deleteSession(token)
+
+  def checkValidSession(token: String): Option[UserType] = findSession(token) match {
+    case correct@Some(session) => findUserById(session.userId)
+    case _ => None
+  }
+}
+
 //
 //object AuthServiceAuthentication {
 //

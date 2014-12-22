@@ -1,9 +1,9 @@
 package io.github.morgaroth.utils.spray.auth.mongoimpl
 
-import com.typesafe.config.{ConfigObject, Config}
+import com.typesafe.config.Config
 
-trait UserDBConfig {
-  def userDbConfig: Config
+trait UsersDBConfig {
+  def usersDbConfig: Config
 }
 
 trait SessionsDBConfig {
