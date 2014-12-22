@@ -24,6 +24,9 @@ trait AuthServiceAPI[UserType, SessionType <: UserSession]
 
   this: AuthServiceAuthentication[UserType, SessionType] =>
 
+
+  def authDirective = headerValueByName(HeaderName)
+
   def checkSession(token: String): Future[Authentication[UserType]] = Future {
     checkValidSession(token) match {
       case Some(user) => Right(user)
@@ -31,15 +34,15 @@ trait AuthServiceAPI[UserType, SessionType <: UserSession]
     }
   }
 
-  override def validateDirective: Directive1[UserType] = headerValueByName(HeaderName).hflatMap(values =>
-    authenticate(AuthMagnet.fromFutureAuth[UserType](checkSession(values.head)))
-  )
+  def checkDirective(token: String) = authenticate(AuthMagnet.fromFutureAuth[UserType](checkSession(token)))
+
+  override def validateDirective: Directive1[UserType] = authDirective.hflatMap(values => checkDirective(values.head))
 
   //@formatter:off
   val route =
     optionsForCors ~
     pathEndOrSingleSlash {
-    get(complete("Hello from auth service")) ~
+      get(complete("Hello from auth service")) ~
       post(respondWithCors {
         handleWith((userReq: UserLoginReq) =>
           loginUser(userReq.login, userReq.password) match {
@@ -47,7 +50,7 @@ trait AuthServiceAPI[UserType, SessionType <: UserSession]
             case None => Left(BadRequest)
           })
       }) ~
-      delete(headerValueByName(HeaderName)(authToken =>
+      delete(authDirective(authToken =>
         complete {
           logoutUser(authToken)
           NoContent
