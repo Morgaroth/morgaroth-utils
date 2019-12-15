@@ -1,0 +1,19 @@
+[0m[[0minfo[0m] [0mPackaging /home/morgaroth/projects/morgaroth-utils/mongodb_testing/target/scala-2.12/morgaroth-utils-mongodb-test_2.12-2.0.0-SNAPSHOT.jar ...[0m
+[0m[[0mdebug[0m] [0mInput file mappings:[0m
+[0m[[0mdebug[0m] [0m	io/github/morgaroth[0m
+[0m[[0mdebug[0m] [0m	  /home/morgaroth/projects/morgaroth-utils/mongodb_testing/target/scala-2.12/classes/io/github/morgaroth[0m
+[0m[[0mdebug[0m] [0m	io[0m
+[0m[[0mdebug[0m] [0m	  /home/morgaroth/projects/morgaroth-utils/mongodb_testing/target/scala-2.12/classes/io[0m
+[0m[[0mdebug[0m] [0m	io/github/morgaroth/utils[0m
+[0m[[0mdebug[0m] [0m	  /home/morgaroth/projects/morgaroth-utils/mongodb_testing/target/scala-2.12/classes/io/github/morgaroth/utils[0m
+[0m[[0mdebug[0m] [0m	io/github/morgaroth/utils/mongodb[0m
+[0m[[0mdebug[0m] [0m	  /home/morgaroth/projects/morgaroth-utils/mongodb_testing/target/scala-2.12/classes/io/github/morgaroth/utils/mongodb[0m
+[0m[[0mdebug[0m] [0m	io/github/morgaroth/utils/mongodb/test/Specs2MongoAround.class[0m
+[0m[[0mdebug[0m] [0m	  /home/morgaroth/projects/morgaroth-utils/mongodb_testing/target/scala-2.12/classes/io/github/morgaroth/utils/mongodb/test/Specs2MongoAround.class[0m
+[0m[[0mdebug[0m] [0m	io/github/morgaroth/utils/mongodb/test[0m
+[0m[[0mdebug[0m] [0m	  /home/morgaroth/projects/morgaroth-utils/mongodb_testing/target/scala-2.12/classes/io/github/morgaroth/utils/mongodb/test[0m
+[0m[[0mdebug[0m] [0m	io/github/morgaroth/utils/mongodb/test/DBConfig.class[0m
+[0m[[0mdebug[0m] [0m	  /home/morgaroth/projects/morgaroth-utils/mongodb_testing/target/scala-2.12/classes/io/github/morgaroth/utils/mongodb/test/DBConfig.class[0m
+[0m[[0mdebug[0m] [0m	io/github[0m
+[0m[[0mdebug[0m] [0m	  /home/morgaroth/projects/morgaroth-utils/mongodb_testing/target/scala-2.12/classes/io/github[0m
+[0m[[0minfo[0m] [0mDone packaging.[0m

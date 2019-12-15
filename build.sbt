@@ -1,41 +1,54 @@
+import sbt.Keys.{resolvers, scalaVersion}
+
 sonatypeSettings
-
-organization := ThisProject.organization
-
-publishMavenStyle := true
 
 name := "utils"
 
-version := ThisProject.projectVersion
-
-scalaVersion := "2.10.4"
-
-crossScalaVersions := Seq(
-  "2.10.4",
-  "2.11.4"
-)
-
-resolvers ++= Seq(
-  "Sonatype OSS Releases" at "http://oss.sonatype.org/content/repositories/releases/"
-)
-
-lazy val base = project
-
-lazy val mongodb = project
-
-lazy val mongodb_testing = project
-
-lazy val crypto = project.dependsOn(base)
-
-lazy val spray = project.dependsOn(mongodb, base)
-
-lazy val akka = project
-
-lazy val morgaroth = Project(
-  id = "morgaroth",
-  base = file("."),
-  aggregate = Seq(base, crypto, spray, mongodb, akka, mongodb_testing),
-  settings = Project.defaultSettings ++ Seq(
-    publishArtifact := false
+val commonSettings = Seq(
+  organization := ThisProject.organization,
+  version := ThisProject.projectVersion,
+  pomExtra := ThisProject.commonPomFile,
+  publishTo := ThisProject.publishTo,
+  publishMavenStyle := true,
+  scalaVersion := "2.12.2",
+  scalacOptions ++= Seq("-feature"),
+  scalacOptions in Test ++= Seq("-Yrangepos"),
+  resolvers ++= Seq(
+    "Sonatype OSS Releases" at "http://oss.sonatype.org/content/repositories/releases/"
   )
 )
+
+lazy val base = project.settings(commonSettings: _*)
+
+lazy val mongodb = project.settings(commonSettings: _*).settings(
+  name := s"${ThisProject.projectName}-mongodb",
+  libraryDependencies ++= Seq(
+    "com.github.salat" %% "salat-core" % "1.11.1",
+    "com.github.salat" %% "salat-util" % "1.11.1",
+    ThisProject.Deps.Ficus,
+    ThisProject.Deps.TypesafeCfg
+  )
+)
+
+lazy val mongodb_testing = project.settings(commonSettings: _*).settings(
+  name := s"${ThisProject.projectName}-mongodb-test",
+  libraryDependencies ++= Seq(
+    "com.github.salat" %% "salat-core" % "1.11.1",
+    "com.github.salat" %% "salat-util" % "1.11.1",
+    ThisProject.Deps.Ficus,
+    "org.specs2" %% "specs2-core" % "3.9.1",
+    ThisProject.Deps.TypesafeCfg
+  )
+)
+
+lazy val crypto = project.dependsOn(base).settings(commonSettings: _*)
+
+//lazy val spray = project.dependsOn(mongodb, base)
+
+lazy val akka = project.settings(commonSettings: _*)
+
+lazy val morgaroth = project.in(file("."))
+  .aggregate(base, crypto, mongodb, akka, mongodb_testing)
+  .settings(
+    publishArtifact := false
+  )

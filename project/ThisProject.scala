@@ -6,12 +6,19 @@ import scala.xml.NodeBuffer
 
 object ThisProject {
 
-  val akkaVersion = "2.3.6"
+  val akkaVersion = "2.5.3"
 
-  case class PomData(repoUrl:String,developerUrl:String)
+  object Deps {
+    val Ficus = "com.iheart" %% "ficus" % "1.4.1" withSources()
+    val TypesafeCfg = "com.typesafe" % "config" % "1.3.1" withSources()
+
+  }
+
+  case class PomData(repoUrl: String, developerUrl: String)
 
   def projectName = "morgaroth-utils"
-  def projectVersion = "1.2.6-SNAPSHOT"
+
+  def projectVersion = "2.0.0-SNAPSHOT"
 
   val organization: String = "io.github.morgaroth"
 
@@ -24,10 +31,12 @@ object ThisProject {
     if (projectVersion.endsWith("SNAPSHOT"))
       Some("snapshots" at nexus + "content/repositories/snapshots")
     else
-      Some("releases"  at nexus + "service/local/staging/deploy/maven2")
+      Some("releases" at nexus + "service/local/staging/deploy/maven2")
   }
 
-  def generatePomFile(pomData: PomData): NodeBuffer = <url>{pomData.repoUrl}</url>
+  def generatePomFile(pomData: PomData): NodeBuffer = <url>
+    {pomData.repoUrl}
+  </url>
     <licenses>
       <license>
         <name>BSD-style</name>
@@ -36,8 +45,12 @@ object ThisProject {
       </license>
     </licenses>
     <scm>
-      <url>{pomData.developerUrl}</url>
-      <connection>scm:git:{pomData.developerUrl}</connection>
+      <url>
+        {pomData.developerUrl}
+      </url>
+      <connection>scm:git:
+        {pomData.developerUrl}
+      </connection>
     </scm>
     <developers>
       <developer>

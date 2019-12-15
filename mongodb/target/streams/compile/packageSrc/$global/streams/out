@@ -1,0 +1,11 @@
+[0m[[0minfo[0m] [0mPackaging /home/morgaroth/projects/morgaroth-utils/mongodb/target/scala-2.12/morgaroth-utils-mongodb_2.12-2.0.0-SNAPSHOT-sources.jar ...[0m
+[0m[[0mdebug[0m] [0mInput file mappings:[0m
+[0m[[0mdebug[0m] [0m	io/github/morgaroth/utils/mongodb/MongoDAOAnyKey.scala[0m
+[0m[[0mdebug[0m] [0m	  /home/morgaroth/projects/morgaroth-utils/mongodb/src/main/scala/io/github/morgaroth/utils/mongodb/MongoDAOAnyKey.scala[0m
+[0m[[0mdebug[0m] [0m	io/github/morgaroth/utils/mongodb/SalatDAOWithCfg.scala[0m
+[0m[[0mdebug[0m] [0m	  /home/morgaroth/projects/morgaroth-utils/mongodb/src/main/scala/io/github/morgaroth/utils/mongodb/SalatDAOWithCfg.scala[0m
+[0m[[0mdebug[0m] [0m	io/github/morgaroth/utils/mongodb/package.scala[0m
+[0m[[0mdebug[0m] [0m	  /home/morgaroth/projects/morgaroth-utils/mongodb/src/main/scala/io/github/morgaroth/utils/mongodb/package.scala[0m
+[0m[[0mdebug[0m] [0m	io/github/morgaroth/utils/mongodb/JodaSupport.scala[0m
+[0m[[0mdebug[0m] [0m	  /home/morgaroth/projects/morgaroth-utils/mongodb/src/main/scala/io/github/morgaroth/utils/mongodb/JodaSupport.scala[0m
+[0m[[0minfo[0m] [0mDone packaging.[0m
